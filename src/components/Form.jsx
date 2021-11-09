@@ -33,7 +33,7 @@ class Form extends Component {
         </label>
         <label htmlFor="description">
           Descrição:
-          <input
+          <textarea
             name="cardDescription"
             type="textarea"
             value={ cardDescription }
