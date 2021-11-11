@@ -25,15 +25,15 @@ class Card extends Component {
         <p data-testid="description-card">
           { cardDescription }
         </p>
-        <span data-testid="attr1-card">
+        <h5 data-testid="attr1-card">
           { cardAttr1 }
-        </span>
-        <span data-testid="attr2-card">
+        </h5>
+        <h5 data-testid="attr2-card">
           { cardAttr2 }
-        </span>
-        <span data-testid="attr3-card">
+        </h5>
+        <h5 data-testid="attr3-card">
           { cardAttr3 }
-        </span>
+        </h5>
         <p data-testid="rare-card">
           { cardRare }
         </p>
