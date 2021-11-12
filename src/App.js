@@ -13,8 +13,9 @@ class App extends React.Component {
       cardAttr2: '',
       cardAttr3: '',
       cardImage: '',
-      cardRare: 'normal',
+      cardRare: '',
       cardTrunfo: false,
+      isSaveButtonDisabled: true,
     };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -27,7 +28,58 @@ class App extends React.Component {
 
     this.setState({
       [name]: value,
-    });
+    }, this.onVerifyInputEmpty);
+  }
+
+  onVerifyInputEmpty() {
+    const {
+      cardName,
+      cardDescription,
+      cardImage,
+      cardRare,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+    } = this.state;
+
+    const minValue = 0;
+    const maxValue = 90;
+    const sumValues = 210;
+
+    const inputCardTexts = [
+      cardName,
+      cardDescription,
+      cardImage,
+      cardRare,
+    ].every((element) => element !== '');
+
+    const inputCardAttrs = [
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+    ].every((element) => (element >= minValue)
+        && (element <= maxValue)
+        && (element !== ''));
+
+    const inputCardAttrsSum = [
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+    ].map((attr) => Number(attr))
+      .reduce((acc, curr) => acc + curr, minValue);
+
+    if (inputCardTexts
+      && inputCardAttrs
+      && inputCardAttrsSum <= sumValues
+    ) {
+      this.setState({
+        isSaveButtonDisabled: false,
+      });
+    } else {
+      this.setState({
+        isSaveButtonDisabled: true,
+      });
+    }
   }
 
   render() {
@@ -40,6 +92,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      isSaveButtonDisabled,
     } = this.state;
 
     return (
@@ -54,6 +107,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
         />
         <Card
