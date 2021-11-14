@@ -86,7 +86,8 @@ class App extends React.Component {
     }
   }
 
-  onSaveButtonClick() {
+  onSaveButtonClick(evt) {
+    evt.preventDefault();
     const {
       cardName,
       cardDescription,
@@ -146,10 +147,11 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
+      saveCards,
     } = this.state;
 
     return (
-      <div>
+      <div className="container">
         <h1>Adicionar nova carta</h1>
         <Form
           cardName={ cardName }
@@ -175,6 +177,15 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        <div>
+          {
+            saveCards.map((saveCard, idx) => (
+              <div key={ idx }>
+                <Card { ...saveCard } />
+              </div>
+            ))
+          }
+        </div>
       </div>
     );
   }
