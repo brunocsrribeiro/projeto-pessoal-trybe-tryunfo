@@ -22,6 +22,7 @@ class App extends React.Component {
 
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.onDeleteButtonCard = this.onDeleteButtonCard.bind(this);
   }
 
   // Ref.: https://app.betrybe.com/course/front-end/componentes-com-estado-eventos-e-formularios-com-react/formularios-no-react/537fc0f4-1be1-4cd8-8333-9432fa722672/conteudos/0c016b63-b3cf-442c-ac12-d3d2a0968f33/event-handlers-genericos/7d887960-3e88-411f-b052-fa89110ae935?use_case=next_button
@@ -135,6 +136,21 @@ class App extends React.Component {
     }
   }
 
+  // Ref.: https://github.com/tryber/sd-016-b-project-tryunfo/pull/103/files
+  onDeleteButtonCard(idxCard) {
+    const { saveCards } = this.state;
+    saveCards.splice(idxCard, 1);
+
+    const card = saveCards
+      .some((saveCard) => (
+        saveCard.cardTrunfo === true
+      ));
+
+    if (!card) {
+      return this.setState({ hasTrunfo: false });
+    }
+  }
+
   render() {
     const {
       cardName,
@@ -182,6 +198,15 @@ class App extends React.Component {
             saveCards.map((saveCard, idx) => (
               <div key={ idx }>
                 <Card { ...saveCard } />
+                <button
+                  type="button"
+                  data-testid="delete-button"
+                  onClick={ () => (
+                    this.onDeleteButtonCard(idx)
+                  ) }
+                >
+                  Excluir
+                </button>
               </div>
             ))
           }
