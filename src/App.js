@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import Header from './components/Header';
 
 class App extends React.Component {
   constructor() {
@@ -167,50 +168,58 @@ class App extends React.Component {
     } = this.state;
 
     return (
-      <div className="container">
-        <h1>Adicionar nova carta</h1>
-        <Form
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onInputChange={ this.onInputChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-        />
-        <div>
-          {
-            saveCards.map((saveCard, idx) => (
-              <div key={ idx }>
-                <Card { ...saveCard } />
-                <button
-                  type="button"
-                  data-testid="delete-button"
-                  onClick={ () => (
-                    this.onDeleteButtonCard(idx)
-                  ) }
-                >
-                  Excluir
-                </button>
-              </div>
-            ))
-          }
-        </div>
+      <div>
+        <Header />
+        <main>
+          <div>
+            <Form
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+              hasTrunfo={ hasTrunfo }
+              isSaveButtonDisabled={ isSaveButtonDisabled }
+              onInputChange={ this.onInputChange }
+              onSaveButtonClick={ this.onSaveButtonClick }
+            />
+          </div>
+          <div>
+            <Card
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+            />
+          </div>
+          <div>
+            {
+              saveCards.map((saveCard, idx) => (
+                <div key={ idx }>
+                  <Card { ...saveCard } />
+                  <div>
+                    <button
+                      type="button"
+                      data-testid="delete-button"
+                      onClick={ () => (
+                        this.onDeleteButtonCard(idx)
+                      ) }
+                    >
+                      Excluir
+                    </button>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </main>
       </div>
     );
   }

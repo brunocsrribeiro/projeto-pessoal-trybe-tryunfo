@@ -20,11 +20,10 @@ class Form extends Component {
 
     return (
       <form>
-        <div className="form-group mb-3">
+        <div>
           <label htmlFor="cardName">
-            Nome:
+            Nome
             <input
-              className="form-control"
               name="cardName"
               type="text"
               value={ cardName }
@@ -34,11 +33,10 @@ class Form extends Component {
             />
           </label>
         </div>
-        <div className="form-group mb-3">
+        <div>
           <label htmlFor="description">
-            Descrição:
+            Descrição
             <textarea
-              className="form-control"
               name="cardDescription"
               type="textarea"
               value={ cardDescription }
@@ -48,11 +46,10 @@ class Form extends Component {
             />
           </label>
         </div>
-        <div className="form-group mb-3">
-          <label htmlFor="attr1" className="form-group">
-            Força:
+        <div>
+          <label htmlFor="attr1">
+            Atributo 1
             <input
-              className="form-control"
               name="cardAttr1"
               type="number"
               value={ cardAttr1 }
@@ -62,11 +59,10 @@ class Form extends Component {
             />
           </label>
         </div>
-        <div className="form-group mb-3">
-          <label htmlFor="attr2" className="form-group">
-            Velocidade:
+        <div>
+          <label htmlFor="attr2">
+            Atributo 2
             <input
-              className="form-control"
               name="cardAttr2"
               type="number"
               value={ cardAttr2 }
@@ -76,11 +72,10 @@ class Form extends Component {
             />
           </label>
         </div>
-        <div className="form-group mb-3">
-          <label htmlFor="attr3" className="form-group">
-            Drible:
+        <div>
+          <label htmlFor="attr3">
+            Atributo 3
             <input
-              className="form-control"
               name="cardAttr3"
               type="number"
               value={ cardAttr3 }
@@ -90,11 +85,10 @@ class Form extends Component {
             />
           </label>
         </div>
-        <div className="form-group mb-3">
-          <label htmlFor="image" className="form-group">
+        <div>
+          <label htmlFor="image">
             Imagem:
             <input
-              className="form-control"
               name="cardImage"
               type="text"
               value={ cardImage }
@@ -104,11 +98,10 @@ class Form extends Component {
             />
           </label>
         </div>
-        <div className="form-group mb-3">
-          <label htmlFor="rare" className="form-group">
+        <div>
+          <label htmlFor="rare">
             Raridade:
             <select
-              className="form-control"
               name="cardRare"
               value={ cardRare }
               data-testid="rare-input"
@@ -121,18 +114,17 @@ class Form extends Component {
             </select>
           </label>
         </div>
-        <div className="form-group mb-3">
+        <div>
           {/* Ref.: https://pt-br.reactjs.org/docs/conditional-rendering.html */}
           { hasTrunfo
             ? (
               <span>Você já tem um Super Trunfo em seu baralho</span>
             )
             : (
-              <div className="form-group">
-                <label htmlFor="trunfo" className="form-check-label">
-                  Super Trunfo:
+              <div>
+                <label htmlFor="trunfo">
+                  Super Trunfo
                   <input
-                    className="form-check-input"
                     name="cardTrunfo"
                     type="checkbox"
                     checked={ cardTrunfo }
@@ -146,7 +138,6 @@ class Form extends Component {
             ) }
         </div>
         <button
-          className="btn btn-primary btn-lg"
           type="submit"
           disabled={ isSaveButtonDisabled }
           data-testid="save-button"
